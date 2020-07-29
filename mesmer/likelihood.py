@@ -1,5 +1,5 @@
 """ This module contains the main likelihood object of the package.
-:class:`hoover.likelihood.LogProb`. This object is initialized by
+:class:`mesmer.likelihood.LogProb`. This object is initialized by
 providing a set of observed data and its covariance, and specifying
 a model.
 """
@@ -22,7 +22,7 @@ class LogProb(object):
     def __init__(self, data=None, covariance=None, frequencies=None, model=None):
         """ The setup of this class requires the observed multifrequency
         sky maps, their pixel covariance (assumed diagonal in pixel space),
-        the SED matrix (instance of `hoover.FMatrix`), a dictionary
+        the SED matrix (instance of `mesmer.FMatrix`), a dictionary
         containing the fixed parameter and their values, and a set of priors,
         which tell the likelihood which parameters are to be let vary.
 
@@ -34,8 +34,8 @@ class LogProb(object):
         covariance: ndarray
             Array of shape (Nfreq, Npol, Npix) containing the pixel covariance
             of the array `data`.
-        fmatrix: object, :class:`hoover.FMatrix`
-            Instance of :class:`hoover.FMatrix` that defines the component
+        fmatrix: object, :class:`mesmer.FMatrix`
+            Instance of :class:`mesmer.FMatrix` that defines the component
             scaling in the fitted sky model.
         fixed_parameters: dict
             Dictionary, where key, value pairs correspond to parameter names
@@ -123,7 +123,7 @@ class LogProb(object):
 
         The first level of the dictionary has keys corresponding
         to the different components, and must match one of the
-        functions in `hoover.seds`. The values of the keys are
+        functions in `mesmer.seds`. The values of the keys are
         dictionaries with `fixed` and `varied` keywords. These
         contain further dictionaries with fixed parameter
         name / value pairs, and free parameter prior name / pairs.
@@ -188,8 +188,8 @@ class LogProb(object):
 
         Returns
         -------
-        :class:`hoover.likelihood.LogProb`
-            Instantiated :class:`hoover.likelihood.LogProb` object.
+        :class:`mesmer.likelihood.LogProb`
+            Instantiated :class:`mesmer.likelihood.LogProb` object.
         """
         # get metadata from the simulation
         with h5py.File(fpath, "r") as f:

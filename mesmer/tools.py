@@ -52,7 +52,7 @@ class WhiteNoise(object):
     def get_pix_var_map(self, nside):
         """ Function to return a map containing the variance
         in each pixel at each frequency. This is a product
-        consumed by the `hoover.likelihood.LogProb` object,
+        consumed by the `mesmer.likelihood.LogProb` object,
         and is provided for convenient use with that.
 
         Parameters

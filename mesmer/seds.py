@@ -16,7 +16,7 @@ various components.
 
     import matplotlib.pyplot as plt
     import numpy as np
-    from hoover.seds import *
+    from mesmer.seds import *
 
     freqs = np.logspace(1, 3)
     c = cmb(freqs)
@@ -63,16 +63,16 @@ class FMatrix(object):
     Examples
     --------
 
-    >>> from hoover.seds import FMatrix
+    >>> from mesmer.seds import FMatrix
     >>> fmatrix = FMatrix(['cmb', 'syncpl', 'dustmbb'])
     >>> pars = {
-    >>>     'nu': np.array([1, 100, 1000]),
-    >>>     'nu_ref_d': 100.,
-    >>>     'nu_ref_s':100.,
-    >>>     'beta_s': -3.,
-    >>>     'beta_d': 1.5,
-    >>>     'T_d': 20.,
-    >>> }
+    ...     'nu': np.array([1, 100, 1000]),
+    ...     'nu_ref_d' : 100.,
+    ...     'nu_ref_s' : 100.,
+    ...     'beta_s' : -3.,
+    ...     'beta_d' : 1.5,
+    ...     'T_d' : 20.,
+    ... }
     >>> print(fmatrix(**pars).shape)
     (3, 3)
 
@@ -83,7 +83,7 @@ class FMatrix(object):
         with which this class was instantiated.
 
         As it is used in a variety of contexts, the
-        :class:`hoover.seds.FMatrix` can be called in a variety of ways.
+        :class:`mesmer.seds.FMatrix` can be called in a variety of ways.
         It must ultimately be passed the arguments for all of the component
         functions. This is usually done through keyword arguments, however,
         the frequency can be passed as the only positional argument.
