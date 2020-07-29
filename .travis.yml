@@ -114,12 +114,6 @@ matrix:
         # versions of Python, we can vary Python and Numpy versions at the same
         # time.
 
-        - os: linux
-          python: 3.7
-          name: Python 3.7 with astropy 3.0 and Numpy 1.17
-          stage: Comprehensive tests
-          env: TOXENV=py37-test-astropy30-numpy117
-
         # Do a code style check
         - os: linux
           python: 3.8
@@ -162,7 +156,4 @@ after_success:
     - if [[ $TOXENV == *-cov ]]; then
         pip install coveralls;
         coveralls;
-    #    # If codecov is set up for this package, uncomment the two lines below
-    #    pip install codecov;
-    #    codecov;
-    # fi
+
