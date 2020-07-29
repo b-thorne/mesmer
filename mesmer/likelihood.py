@@ -398,7 +398,7 @@ def _lnP(lnprior, T_bar, N_T_inv):
     Jeffrey's prior of 1608.00551:
     .. math::
 
-        p(b|d) \propto \exp\left[\frac{1}{2}\bar{T}^T N_T^{-1} \bar{T} \right]p_p(b)
+        p(b|d) \\propto \\exp\\left[\\frac{1}{2}\\bar{T}^T N_T^{-1} \\bar{T} \\right]p_p(b)
 
     Parameters
     ----------

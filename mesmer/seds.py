@@ -188,7 +188,8 @@ def sync_curvedpl(
 
     .. math::
 
-        f_{\\rm syncpl}(\\nu) = \\left(\\nu / \\nu_s \\right)^{\\beta_s + \\beta_c \\ln(\\nu / \\nu_s)}
+        f_{\\rm syncpl}(\\nu) = \\left(\\nu / \\nu_s \\right)^{\\beta_s +
+        \\beta_c \\ln(\\nu / \\nu_s)}
 
     Parameters
     ----------
@@ -221,7 +222,8 @@ def dustmbb(
 
     .. math::
 
-        f_{\\rm dust}(\\nu) = \\left(\\nu / \\nu_d \\right)^{1 + \\beta_d} \\frac{e^{h \\nu_d / (k_B T_d)} - 1} {e^{h \\nu / (k_B T_d)} - 1}
+        f_{\\rm dust}(\\nu) = \\left(\\nu / \\nu_d \\right)^{1 + \\beta_d}
+        \\frac{e^{h \\nu_d / (k_B T_d)} - 1} {e^{h \\nu / (k_B T_d)} - 1}
 
     Parameters
     ----------
