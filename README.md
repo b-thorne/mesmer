@@ -1,3 +1,7 @@
+[![astropy](http://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat)](http://www.astropy.org/)
+[![Build Status](https://travis-ci.org/bthorne93/mesmer.svg?branch=master)](https://travis-ci.org/bthorne93/mesmer)
+
+
 # mesmer
 
 Package to calculate the log probability of foregrounds.
