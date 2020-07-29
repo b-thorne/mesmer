@@ -135,7 +135,7 @@ before_install:
     - if [[ $TOXENV == *-cov ]]; then
         export TOXPOSARGS=$TOXPOSARGS" --cov-report=xml:"$TRAVIS_BUILD_DIR"/coverage.xml";
       fi
-    - sudo apt-get install texlive-xetex
+    - tlmgr install index
 
 install:
 
