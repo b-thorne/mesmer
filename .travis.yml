@@ -1,7 +1,5 @@
 language: python
 
-latex: true
-
 # We need a full clone to make sure setuptools_scm works properly
 git:
     depth: false
@@ -18,6 +16,9 @@ addons:
     apt:
         packages:
             - graphviz
+            - texlive-latex-extra
+            - dvipng
+            - pandoc
 
 
 stages:
@@ -87,13 +88,6 @@ matrix:
           name: Python 3.8 with developer version of astropy
           stage: Comprehensive tests
           env: TOXENV=py38-test-devdeps
-
-        # And with an older Python, Astropy LTS, and the oldest supported Numpy
-        - os: linux
-          python: 3.6
-          name: Python 3.6 astropy LTS and Numpy 1.16
-          stage: Comprehensive tests
-          env: TOXENV=py36-test-astropylts-numpy116
 
         # Add a job that runs from cron only and tests against astropy dev and
         # numpy dev to give a change for early discovery of issues and feedback
