@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "mesmer"
-version = "0.0.1"
+version = "0.0.2.dev"
 description = "mesmer sees through foregrounds"
 authors = ["Ben Thorne <bn.thorne@googlemail.com>"]
 readme = "README.md"
