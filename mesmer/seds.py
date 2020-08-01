@@ -243,5 +243,6 @@ def dustmbb(
     """
     x_to = np.float32(0.0479924466) * nu / T_d
     x_from = np.float32(0.0479924466) * nu_ref_d / T_d
-    sed = (nu / nu_ref_d) ** (1.0 + beta_d) * (np.exp(x_from) - 1) / (np.exp(x_to) - 1)
+    sed = (nu / nu_ref_d) ** (1.0 + beta_d)
+    sed *= (np.exp(x_from) - 1) / (np.exp(x_to) - 1)
     return sed
