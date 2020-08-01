@@ -1,5 +1,5 @@
 [![astropy](http://img.shields.io/badge/powered%20by-AstroPy-orange.svg?style=flat)](http://www.astropy.org/)
-[![mesmer-master Actions Status](https://github.com/bthorne93/mesmer/workflows/mesmer-master/badge.svg)](https://github.com/bthorne93/mesmer/actions)
+[![mesmer-master Actions Status](https://github.com/bthorne93/mesmer/workflows/memser-master/badge.svg)](https://github.com/bthorne93/mesmer/actions)
 
 # mesmer
 
