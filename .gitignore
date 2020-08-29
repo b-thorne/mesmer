@@ -21,6 +21,9 @@ MANIFEST
 docs/api
 docs/_build
 
+# Poetry
+.python-version
+
 # Eclipse editor project files
 .project
 .pydevproject
