@@ -5,7 +5,8 @@ a model.
 """
 import yaml
 import h5py
-import numpy as np
+import jax.numpy as np
+from jax.scipy import linalg
 from .seds import FMatrix
 
 __all__ = ["LogProb"]
@@ -96,7 +97,7 @@ class LogProb(object):
         Returns
         -------
         float
-            The log probability at this point in parameter space.
+            The log probability at `theta`.
         """
         try:
             assert len(theta) == len(self.free_parameters)
@@ -114,7 +115,24 @@ class LogProb(object):
         return lnP
 
     def data_setup(self, data, covariance, frequencies):
-        self.nfreq, self.npol, self.npix = data.shape
+        ndim_input = data.ndim
+
+        try:
+            assert ndim_input == covariance.ndim
+        except AssertionError:
+            print(f"Data has shape {data.shape}")
+            print(f"Covaria nce has shape {covariance.shape}")
+            raise AssertionError("Covariance and data must have same dimensions.")
+
+        if ndim_input == 3:
+            self.hpx = True
+            self.nfreq, self.npol, self.npix = data.shape
+        if ndim_input == 4:
+            self.hpx = False
+            self.nfreq, self.npol, self.npix_x, self.npix_y = data.shape
+            data = data.reshape(self.nfreq, self.npol, self.npix_x * self.npix_y)
+            covariance = covariance.reshape(self.nfreq, self.npol, self.npix_x * self.npix_y)
+            self.npix = self.npix_x * self.npix_y
         self.frequencies = frequencies
         self.N_inv_d = (data, covariance)
 
@@ -388,7 +406,7 @@ def _T_bar(F: np.ndarray, N_T_inv: np.ndarray, N_inv_d: np.ndarray) -> np.ndarra
         T_bar, the expected component amplitude.
     """
     y = np.sum(F[None, :, :] * N_inv_d[:, None, :], axis=2)
-    return np.linalg.solve(N_T_inv, y)
+    return linalg.solve(N_T_inv, y)
 
 
 def _lnP(lnprior, T_bar, N_T_inv):

@@ -7,9 +7,17 @@ of currently allowed SEDs is:
 * :py:func:`sync_curvedpl`
 * :py:func:`dustmbb`
 
-These are referred ot by name when defining the :py:class:`FMatrix`
+These are referred to by name when defining the :py:class:`FMatrix`
 object, which then composes the model as a linear sum of the
 various components.
+
+Notes
+-----
+
+All the SEDs in this file are given 
+
+
+
 
 .. plot::
     :include-source:
@@ -48,10 +56,10 @@ various components.
 
 """
 
-import numpy as np
+import jax.numpy as np
 
 __all__ = ["FMatrix", "cmb", "syncpl", "sync_curvedpl", "dustmbb"]
-
+ 
 
 class FMatrix(object):
     """ Class to construct the foreground mixing matrix.
@@ -130,6 +138,18 @@ class FMatrix(object):
 def cmb(nu: np.ndarray, *args, **kwargs) -> np.ndarray:
     """ Function to compute CMB SED, as a function of frequency.
 
+    This function computes the scaling of the Brightness temperature
+    as a function of frequency. See for example Equation (3) of
+    Ichiki + 2014 ("A concise review of foreground emission").
+
+    The definition of brightness temperature is:
+
+    .. math::
+
+        \Delta T_{\rm CMB} = \frac{(e^x-1)^2}{x^2e^x}T_B
+
+    The scaling is therefore given by:
+
     .. math::
 
         f_{CMB}(\\nu) = e^x \\frac{x}{(e^x - 1)^2}
@@ -142,7 +162,7 @@ def cmb(nu: np.ndarray, *args, **kwargs) -> np.ndarray:
     Returns
     -------
     ndarray
-        CMB sed evaluated at frequency nu.
+        CMB brightness temperature sed  evaluated at frequency nu.
     """
     x = 0.0176086761 * nu
     ex = np.exp(x)
@@ -151,7 +171,11 @@ def cmb(nu: np.ndarray, *args, **kwargs) -> np.ndarray:
 
 
 def syncpl(
-    nu: np.ndarray, nu_ref_s: np.float32, beta_s: np.float32, *args, **kwargs
+    nu: np.ndarray,
+    nu_ref_s: np.float32,
+    beta_s: np.float32,
+    *args,
+    **kwargs
 ) -> np.ndarray:
     """ Function to compute synchrotron power law SED, given by:
 
@@ -224,6 +248,13 @@ def dustmbb(
 
         f_{\\rm dust}(\\nu) = \\left(\\nu / \\nu_d \\right)^{1 + \\beta_d}
         \\frac{e^{h \\nu_d / (k_B T_d)} - 1} {e^{h \\nu / (k_B T_d)} - 1}
+
+    Recall that:
+
+    .. math::
+
+        B_\\nu(\\nu, T) = \\frac{2h\\nu^3}{c^2}\\frac{1}{e^{h\\nu/kT} - 1}.
+
 
     Parameters
     ----------
