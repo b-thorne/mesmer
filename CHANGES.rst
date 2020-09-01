@@ -1,5 +1,6 @@
 0.0.3 (2020-09-01)
 =====
+- Python 3.8 now required.
 - Reimplemented to use jax.numpy.
 - Added testing for mesmer.seds and mesmer.likelihood.
 - Added example notebook implementing ML and HMC.
