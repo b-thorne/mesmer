@@ -1,3 +1,6 @@
+0.0.4 (unreleased)
+=====
+
 0.0.3 (2020-09-01)
 =====
 - Python 3.8 now required.
