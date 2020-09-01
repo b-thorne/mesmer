@@ -14,7 +14,7 @@ various components.
 Notes
 -----
 
-All the SEDs in this file are given 
+All the SEDs in this file assume RJ units.
 
 
 
@@ -59,7 +59,7 @@ All the SEDs in this file are given
 import jax.numpy as np
 
 __all__ = ["FMatrix", "cmb", "syncpl", "sync_curvedpl", "dustmbb"]
- 
+
 
 class FMatrix(object):
     """ Class to construct the foreground mixing matrix.
@@ -140,15 +140,9 @@ def cmb(nu: np.ndarray, *args, **kwargs) -> np.ndarray:
 
     This function computes the scaling of the Brightness temperature
     as a function of frequency. See for example Equation (3) of
-    Ichiki + 2014 ("A concise review of foreground emission").
+    Ichiki + 2014 (A concise review of foreground emission).
 
     The definition of brightness temperature is:
-
-    .. math::
-
-        \Delta T_{\rm CMB} = \frac{(e^x-1)^2}{x^2e^x}T_B
-
-    The scaling is therefore given by:
 
     .. math::
 
@@ -171,11 +165,7 @@ def cmb(nu: np.ndarray, *args, **kwargs) -> np.ndarray:
 
 
 def syncpl(
-    nu: np.ndarray,
-    nu_ref_s: np.float32,
-    beta_s: np.float32,
-    *args,
-    **kwargs
+    nu: np.ndarray, nu_ref_s: np.float32, beta_s: np.float32, *args, **kwargs
 ) -> np.ndarray:
     """ Function to compute synchrotron power law SED, given by:
 

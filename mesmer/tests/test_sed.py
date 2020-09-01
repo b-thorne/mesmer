@@ -31,10 +31,10 @@ def test_dustmbb():
     from jax import grad
     import numpy as np
 
-    nu = 100.
-    nu_ref_d = 353.
+    nu = 100.0
+    nu_ref_d = 353.0
     beta_d = 1.5
-    T_d = 20.
+    T_d = 20.0
 
     # compare analytic gradient to jax gradient
     df_db = grad(dustmbb, argnums=2)
@@ -42,16 +42,18 @@ def test_dustmbb():
     df_db_1 = dustmbb(nu, nu_ref_d, beta_d, T_d) * np.log(nu / nu_ref_d)
     np.testing.assert_almost_equal(df_db_0, df_db_1)
 
+
 def test_syncpl():
     from mesmer.seds import syncpl
     from jax import grad
     import numpy as np
-    nu = 100.
-    nu_ref_s = 23.
-    beta_s = -3.
+
+    nu = 100.0
+    nu_ref_s = 23.0
+    beta_s = -3.0
 
     # compare analytic gradient to jax gradient
     df_db = grad(syncpl, 2)
     df_db_0 = df_db(nu, nu_ref_s, beta_s)
-    df_db_1 = (nu / nu_ref_s)**beta_s * np.log(nu / nu_ref_s)
+    df_db_1 = (nu / nu_ref_s) ** beta_s * np.log(nu / nu_ref_s)
     np.testing.assert_almost_equal(df_db_0, df_db_1)
