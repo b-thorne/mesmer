@@ -18,7 +18,7 @@ This approach has been used in these papers:
 
 ## Useage
 
-[An example note book](examples/example.ipynb) is in the `notebooks` folder.
+[An example note book](examples/example.ipynb) is in the [`examples`](examples) folder.
 
 To add SEDs, edit [the SED functions file](mesmer/seds.py). The likelihood is defined in [the likelihood file](mesmer/likelihood.py).
 
